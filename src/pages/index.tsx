@@ -1,3 +1,4 @@
+import { signIn } from 'next-auth/react';
 import Head from 'next/head';
 
 export default function Home() {
@@ -11,6 +12,13 @@ export default function Home() {
       </Head>
       <main className="w-full bg-slate-800">
         <h1 className="text-3xl font-bold underline">Hello world!</h1>
+        <button
+          onClick={() => {
+            signIn();
+          }}
+        >
+          Login
+        </button>
       </main>
     </>
   );

@@ -10,9 +10,15 @@ const authOptions: NextAuthOptions = {
 	providers: [
 		CredentialsProvider({
 			type: 'credentials',
-			credentials: { },
-			authorize: function (credentials: Record<never, string> | undefined, req: Pick<RequestInternal, "body" | "query" | "headers" | "method">): Awaitable<User | null> {
-				throw new Error("Function not implemented.");
+			credentials: {},
+			authorize(credentials, req) {
+				const { email, password } = credentials as { email: string, password: string }
+
+				if (email !== 'prouzad' && password === '1234') {
+					return null
+				}
+
+				return { id: '1234', name: 'Abdulla', email: 'example@mail.com' }
 			}
 		})
 	]

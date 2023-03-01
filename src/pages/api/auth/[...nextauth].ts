@@ -8,20 +8,12 @@ const authOptions: NextAuthOptions = {
 	},
 
 	providers: [
-		CredentialsProvider({
-			type: 'credentials',
-			credentials: {},
-			authorize(credentials, req) {
-				const { email, password } = credentials as { email: string, password: string }
+	],
 
-				if (email !== 'prouzad' && password === '1234') {
-					return null
-				}
-
-				return { id: '1234', name: 'Abdulla', email: 'example@mail.com' }
-			}
-		})
-	]
+	pages: {
+		signIn: '/auth/signin',
+		error: '/auth/signin',
+	}
 }
 
 export default NextAuth(authOptions)
